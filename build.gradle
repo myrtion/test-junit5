@@ -1,0 +1,54 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0-M3")
+  testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M3")
+
+  testRuntime("org.apache.logging.log4j:log4j-core:2.6.2")
+  testRuntime("org.apache.logging.log4j:log4j-jul:2.6.2")
+
+}
+
+compileJava {
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+}
+
+
+compileTestJava {
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+}
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M3'
+  }
+}
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'com.vsct.vsc.junit5tests.xspeedit.XSpeeditRunner'
+  }
+  version "0.1-SNAPSHOT"
+}
+
+junitPlatform {
+  logManager 'org.apache.logging.log4j.jul.LogManager'
+  reportsDir file('build/test-results/junit-platform') // this is the default
+}
+
+task wrapper(type: Wrapper) {
+  description = 'Generates gradlew[.bat] scripts'
+  gradleVersion = '3.3'
+}

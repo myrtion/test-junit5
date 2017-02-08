@@ -1,3 +1,5 @@
+package com.vsct.vsc.junit5tests.xspeedit;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +31,7 @@ class XSpeedItImplementationTest {
         List<Item> outputItems = packages.stream().flatMap(p -> p.getItems().stream()).collect(Collectors.toList());
 
         assertTrue(outputItems.stream().noneMatch(
-            item -> item.getSize() < 1 || item.getSize() > 9
+                item -> item.getSize() < 1 || item.getSize() > 9
         ));
 
     }
@@ -89,6 +91,6 @@ class XSpeedItImplementationTest {
 
         assertTrue(packages.isEmpty());
     }
-    
-    
+
+
 }

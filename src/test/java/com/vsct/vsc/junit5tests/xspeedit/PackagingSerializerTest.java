@@ -1,3 +1,5 @@
+package com.vsct.vsc.junit5tests.xspeedit;
+
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
