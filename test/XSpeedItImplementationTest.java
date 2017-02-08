@@ -77,7 +77,7 @@ class XSpeedItImplementationTest {
         XSpeedItImplementation xspeedit = new XSpeedItImplementation();
         List<Packaging> packages = xspeedit.pack(items);
 
-        assertTrue(packages.stream().noneMatch(p -> p.size() == 0));
+        assertTrue(packages.isEmpty());
     }
 
     @Test
@@ -87,7 +87,7 @@ class XSpeedItImplementationTest {
         XSpeedItImplementation xspeedit = new XSpeedItImplementation();
         List<Packaging> packages = xspeedit.pack(items);
 
-        assertTrue(packages.stream().noneMatch(p -> p.size() == 0));
+        assertTrue(packages.isEmpty());
     }
     
     
