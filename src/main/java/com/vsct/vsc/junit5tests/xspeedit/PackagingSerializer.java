@@ -9,11 +9,9 @@ import java.util.stream.Collectors;
 public class PackagingSerializer {
 
     public static String serialize(List<Packaging> packages) {
-        final Function<Packaging, String> packagingStreamFunction =
-                packaging -> packaging.getItems().stream().map(item -> String.valueOf(item.getSize())).collect(Collectors.joining());
+        final Function<Packaging, String> packagingStreamFunction = Packaging::description;
 
         return packages.stream()
-                .filter(packaging -> packaging.getItems().size() > 0)
                 .map(packagingStreamFunction)
                 .collect(Collectors.joining("/"));
     }

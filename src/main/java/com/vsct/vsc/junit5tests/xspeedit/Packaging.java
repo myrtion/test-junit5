@@ -2,6 +2,7 @@ package com.vsct.vsc.junit5tests.xspeedit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  */
@@ -13,7 +14,7 @@ public class Packaging {
 
     private List<Item> items = new ArrayList<>();
 
-    public boolean addItem(Item item) {
+    public synchronized boolean addItem(Item item) {
         int itemSize = item.getSize();
 
         if (itemSize < MIN_ITEM_SIZE || itemSize > MAX_ITEM_SIZE) {
@@ -27,6 +28,10 @@ public class Packaging {
         }
     }
 
+    public String description() {
+        return items.stream().map(i -> String.valueOf(i.getSize())).collect(Collectors.joining());
+    }
+    
     public List<Item> getItems() {
         return items;
     }

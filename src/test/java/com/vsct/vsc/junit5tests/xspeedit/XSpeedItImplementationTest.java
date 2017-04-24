@@ -28,11 +28,8 @@ class XSpeedItImplementationTest {
         XSpeedItImplementation xspeedit = new XSpeedItImplementation();
         List<Packaging> packages = xspeedit.pack(items);
 
-        List<Item> outputItems = packages.stream().flatMap(p -> p.getItems().stream()).collect(Collectors.toList());
+        assertTrue(packages.stream().flatMap(p -> p.getItems().stream()).noneMatch(i -> i.getSize() < 1 || i.getSize() > 9));
 
-        assertTrue(outputItems.stream().noneMatch(
-                item -> item.getSize() < 1 || item.getSize() > 9
-        ));
 
     }
 
